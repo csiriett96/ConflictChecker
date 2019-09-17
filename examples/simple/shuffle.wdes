@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ProductDES Name="wsp_timer_noreset" xmlns:ns2="http://waters.sourceforge.net/xsd/des" xmlns="http://waters.sourceforge.net/xsd/base">
+    <Comment>Two blocking components of the BMW central locking system, plus the noreset specification to fix the problem.</Comment>
+    <ns2:EventList>
+        <ns2:Event Kind="UNCONTROLLABLE" Name="timeout"/>
+        <ns2:Event Kind="CONTROLLABLE" Name="restart"/>
+        <ns2:Event Kind="CONTROLLABLE" Name="reset"/>
+        <ns2:Event Kind="CONTROLLABLE" Name="timer"/>
+        <ns2:Event Kind="CONTROLLABLE" Name="autovr"/>
+        <ns2:Event Kind="CONTROLLABLE" Name="cmd"/>
+        <ns2:Event Kind="PROPOSITION" Name=":accepting"/>
+    </ns2:EventList>
+    <ns2:AutomataList>
+        <ns2:Automaton Kind="SPEC" Name="wsptime">
+            <ns2:EventRefList>
+                <ns2:EventRef Name=":accepting"/>
+                <ns2:EventRef Name="restart"/>
+                <ns2:EventRef Name="timer"/>
+                <ns2:EventRef Name="cmd"/>
+                <ns2:EventRef Name="autovr"/>
+                <ns2:EventRef Name="timeout"/>
+            </ns2:EventRefList>
+            <ns2:StateList>
+                <ns2:State Name="RESET"/>
+                <ns2:State Name="TIME"/>
+                <ns2:State Initial="true" Name="IN">
+                    <ns2:EventRefList>
+                        <ns2:EventRef Name=":accepting"/>
+                    </ns2:EventRefList>
+                </ns2:State>
+                <ns2:State Name="RUN"/>
+            </ns2:StateList>
+            <ns2:TransitionList>
+                <ns2:Transition Target="TIME" Source="IN" Event="autovr"/>
+                <ns2:Transition Target="TIME" Source="IN" Event="cmd"/>
+                <ns2:Transition Target="IN" Source="RESET" Event="restart"/>
+                <ns2:Transition Target="RUN" Source="RUN" Event="autovr"/>
+                <ns2:Transition Target="RUN" Source="RUN" Event="cmd"/>
+                <ns2:Transition Target="RESET" Source="RUN" Event="timeout"/>
+                <ns2:Transition Target="RUN" Source="TIME" Event="timer"/>
+            </ns2:TransitionList>
+        </ns2:Automaton>
+        <ns2:Automaton Kind="SPEC" Name="noreset">
+            <ns2:EventRefList>
+                <ns2:EventRef Name="reset"/>
+            </ns2:EventRefList>
+            <ns2:StateList>
+                <ns2:State Initial="true" Name="init"/>
+            </ns2:StateList>
+        </ns2:Automaton>
+        <ns2:Automaton Kind="PLANT" Name="timer">
+            <ns2:EventRefList>
+                <ns2:EventRef Name=":accepting"/>
+                <ns2:EventRef Name="timer"/>
+                <ns2:EventRef Name="timeout"/>
+                <ns2:EventRef Name="reset"/>
+            </ns2:EventRefList>
+            <ns2:StateList>
+                <ns2:State Initial="true" Name="IDLE">
+                    <ns2:EventRefList>
+                        <ns2:EventRef Name=":accepting"/>
+                    </ns2:EventRefList>
+                </ns2:State>
+                <ns2:State Name="RUN"/>
+            </ns2:StateList>
+            <ns2:TransitionList>
+                <ns2:Transition Target="RUN" Source="IDLE" Event="timer"/>
+                <ns2:Transition Target="IDLE" Source="RUN" Event="reset"/>
+                <ns2:Transition Target="IDLE" Source="RUN" Event="timeout"/>
+            </ns2:TransitionList>
+        </ns2:Automaton>
+    </ns2:AutomataList>
+</ns2:ProductDES>

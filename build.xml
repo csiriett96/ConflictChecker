@@ -1,0 +1,84 @@
+<!-- -*- indent-tabs-mode: nil -*- -->
+
+<!--
+  COMPX552-19A Assignment 3
+
+  This build script is provided to facilitate the build process of
+  your conflict checker. If you have got ANT installed, you can move
+  the script to the root project directory and use the following commands.
+
+  ant           -  compiles all source files in the src/ subdirectory.
+  ant compile   -  same as ant.
+  ant jar       -  compiles all files and packs them into
+                   an archive ass3.jar in the jar/ subdirectory.
+  ant test      -  runs a single test on the small factory example.
+                   You can change what is tested by editing the file
+                   below.
+  ant clean     -  Cleans up.
+-->
+
+<project name="waters552" default="compile">
+
+<property name="classes.dir" location="classes"/>
+<property name="examples.dir" location="examples"/>
+<property name="jar.dir" location="jar"/>
+<property name="lib.dir" location="lib"/>
+<property name="src.dir" location="src"/>
+
+<property name="jaxb.api.jar" location="${jar.dir}/jaxb-api.jar"/>
+<property name="jaxb.core.jar" location="${jar.dir}/jaxb-core.jar"/>
+<property name="jaxb.impl.jar" location="${jar.dir}/jaxb-impl.jar"/>
+<property name="log4j.api.jar" location="${jar.dir}/log4j-api-2.9.0.jar"/>
+<property name="log4j.core.jar" location="${jar.dir}/log4j-core-2.9.0.jar"/>
+<property name="trove.jar" location="${jar.dir}/trove-3.0.3.jar"/>
+<property name="waters.jar" location="${jar.dir}/waters552.jar"/>
+<property name="ass3.jar" location="${jar.dir}/ass3.jar"/>
+
+<path id="build.classpath">
+  <pathelement location="${jaxb.api.jar}"/>
+  <pathelement location="${jaxb.core.jar}"/>
+  <pathelement location="${jaxb.impl.jar}"/>
+  <pathelement location="${log4j.api.jar}"/>
+  <pathelement location="${log4j.core.jar}"/>
+  <pathelement location="${trove.jar}"/>
+  <pathelement location="${waters.jar}"/>
+</path>
+
+<target name="compile" description="Compiles JAVA files in src/ directory.">
+  <mkdir dir="${classes.dir}"/>
+  <javac srcdir="${src.dir}" destdir="${classes.dir}" 
+         debug="true" debuglevel="lines,source"
+         includeantruntime="false">
+    <classpath refid="build.classpath"/>
+    <compilerarg value="-Xlint:unchecked"/>
+    <compilerarg value="-Xlint:deprecation"/>
+  </javac>
+</target>
+
+<target name="jar" depends="compile"
+        description="Compiles source files and packs into jAR archive.">
+  <jar jarfile="${ass3.jar}">
+    <fileset dir="${classes.dir}"/>
+  </jar>
+</target>
+
+<target name="test" depends="jar" description="Runs a simple test.">
+  <java
+      classname="net.sourceforge.waters.analysis.comp552.ConflictMain"
+      fork="true" failonerror="true">
+    <classpath>
+      <pathelement location="${ass3.jar}"/>
+      <path refid="build.classpath"/>
+    </classpath>
+    <sysproperty key="java.library.path" value="${lib.dir}"/>
+    <jvmarg value="-enableassertions"/>
+    <arg file="${examples.dir}/simple/ipc_lswitch.wmod"/>
+  </java> 
+</target>
+
+<target name="clean" description="Deletes classes and created JAR file.">
+  <delete dir="${classes.dir}"/>
+  <delete file="${ass3.jar}"/>
+</target>
+
+</project>

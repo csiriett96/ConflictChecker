@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Module Name="tline_2a_block" xmlns:ns2="http://waters.sourceforge.net/xsd/base" xmlns="http://waters.sourceforge.net/xsd/module">
+<ConstantAliasList>
+<ConstantAlias Name="GROUPS">
+<ConstantAliasExpression>
+<BinaryExpression Operator="..">
+<IntConstant Value="1"/>
+<IntConstant Value="2"/>
+</BinaryExpression>
+</ConstantAliasExpression>
+</ConstantAlias>
+</ConstantAliasList>
+<EventDeclList>
+<EventDecl Kind="UNCONTROLLABLE" Name="tu_reject">
+<RangeList>
+<BinaryExpression Operator="..">
+<IntConstant Value="1"/>
+<IntConstant Value="2"/>
+</BinaryExpression>
+</RangeList>
+</EventDecl>
+<EventDecl Kind="CONTROLLABLE" Name="tu_load">
+<RangeList>
+<BinaryExpression Operator="..">
+<IntConstant Value="0"/>
+<IntConstant Value="2"/>
+</BinaryExpression>
+</RangeList>
+</EventDecl>
+<EventDecl Kind="UNCONTROLLABLE" Name="tu_accept">
+<RangeList>
+<BinaryExpression Operator="..">
+<IntConstant Value="0"/>
+<IntConstant Value="2"/>
+</BinaryExpression>
+</RangeList>
+</EventDecl>
+<EventDecl Kind="UNCONTROLLABLE" Name="machine_unload">
+<RangeList>
+<BinaryExpression Operator="..">
+<IntConstant Value="1"/>
+<IntConstant Value="2"/>
+</BinaryExpression>
+</RangeList>
+</EventDecl>
+<EventDecl Kind="CONTROLLABLE" Name="machine_load">
+<RangeList>
+<BinaryExpression Operator="..">
+<IntConstant Value="1"/>
+<IntConstant Value="2"/>
+</BinaryExpression>
+</RangeList>
+</EventDecl>
+<EventDecl Kind="PROPOSITION" Name=":accepting"/>
+</EventDeclList>
+<ComponentList>
+<ForeachComponent Name="PREV">
+<BinaryExpression Operator="..">
+<IntConstant Value="1"/>
+<IntConstant Value="1"/>
+</BinaryExpression>
+<ComponentList>
+<ForeachComponent Name="GROUP">
+<BinaryExpression Operator="..">
+<IntConstant Value="2"/>
+<IntConstant Value="2"/>
+</BinaryExpression>
+<ComponentList>
+<SimpleComponent Kind="SPEC">
+<IndexedIdentifier Name="b1sup">
+<SimpleIdentifier Name="PREV"/>
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<Graph>
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+</LabelBlock>
+<NodeList>
+<SimpleNode Initial="true" Name="EMPTY">
+<EventList>
+<SimpleIdentifier Name=":accepting"/>
+</EventList>
+<PointGeometry>
+<Point Y="80" X="208"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="-53"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FILLED1">
+<PointGeometry>
+<Point Y="160" X="208"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="-60"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FILLED2">
+<PointGeometry>
+<Point Y="240" X="208"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="7" X="-63"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FILLED3">
+<PointGeometry>
+<Point Y="320" X="208"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="7" X="-61"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Target="FILLED2" Source="FILLED3">
+<LabelBlock>
+<IndexedIdentifier Name="machine_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-6" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="279" X="243"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED3" Source="FILLED2">
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<IntConstant Value="0"/>
+</IndexedIdentifier>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-15" X="-90"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="279" X="176"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED1" Source="FILLED2">
+<LabelBlock>
+<IndexedIdentifier Name="machine_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="199" X="242"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED1" Source="EMPTY">
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<IntConstant Value="0"/>
+</IndexedIdentifier>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-16" X="-91"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="120" X="176"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED2" Source="FILLED1">
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<IntConstant Value="0"/>
+</IndexedIdentifier>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-18" X="-90"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="201" X="176"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="EMPTY" Source="FILLED1">
+<LabelBlock>
+<IndexedIdentifier Name="machine_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="5"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="119" X="242"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+</ComponentList>
+</ForeachComponent>
+</ComponentList>
+</ForeachComponent>
+<ForeachComponent Name="PREV">
+<BinaryExpression Operator="..">
+<IntConstant Value="0"/>
+<IntConstant Value="0"/>
+</BinaryExpression>
+<ComponentList>
+<ForeachComponent Name="GROUP">
+<BinaryExpression Operator="..">
+<IntConstant Value="1"/>
+<IntConstant Value="1"/>
+</BinaryExpression>
+<ComponentList>
+<SimpleComponent Kind="SPEC">
+<IndexedIdentifier Name="b1sup1_1">
+<SimpleIdentifier Name="PREV"/>
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<Graph>
+<NodeList>
+<SimpleNode Name="FILLED3">
+<PointGeometry>
+<Point Y="320" X="208"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="7" X="-61"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FILLED2">
+<PointGeometry>
+<Point Y="240" X="208"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="7" X="-63"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FILLED1">
+<PointGeometry>
+<Point Y="160" X="208"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="-60"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Initial="true" Name="EMPTY">
+<EventList>
+<SimpleIdentifier Name=":accepting"/>
+</EventList>
+<PointGeometry>
+<Point Y="80" X="208"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="-53"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Target="FILLED2" Source="FILLED2">
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-4" X="3"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="240" X="244"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED3" Source="FILLED2">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="-97"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="279" X="176"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED1" Source="FILLED2">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="199" X="242"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="EMPTY" Source="EMPTY">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-13" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="80" X="242"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED1" Source="EMPTY">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="-95"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="120" X="176"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED2" Source="FILLED3">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-6" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="279" X="243"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED2" Source="FILLED1">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-6" X="-96"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="201" X="176"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="EMPTY" Source="FILLED1">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="5"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="119" X="242"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED1" Source="FILLED1">
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="160" X="242"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+</ComponentList>
+</ForeachComponent>
+</ComponentList>
+</ForeachComponent>
+<ForeachComponent Name="PREV">
+<BinaryExpression Operator="..">
+<IntConstant Value="0"/>
+<IntConstant Value="0"/>
+</BinaryExpression>
+<ComponentList>
+<ForeachComponent Name="GROUP">
+<BinaryExpression Operator="..">
+<IntConstant Value="1"/>
+<IntConstant Value="1"/>
+</BinaryExpression>
+<ComponentList>
+<SimpleComponent Kind="SPEC">
+<IndexedIdentifier Name="b1sup2_1">
+<SimpleIdentifier Name="PREV"/>
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<Graph>
+<NodeList>
+<SimpleNode Initial="true" Name="EMPTY">
+<EventList>
+<SimpleIdentifier Name=":accepting"/>
+</EventList>
+<PointGeometry>
+<Point Y="64" X="192"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FILLED1">
+<PointGeometry>
+<Point Y="144" X="192"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FILLED2">
+<PointGeometry>
+<Point Y="224" X="192"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FILLED3">
+<PointGeometry>
+<Point Y="304" X="192"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Target="FILLED3" Source="FILLED2">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<IndexedIdentifier Name="tu_reject">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-14" X="-99"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="262" X="159"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED1" Source="FILLED2">
+<LabelBlock>
+<IndexedIdentifier Name="machine_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="5"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="184" X="226"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED2" Source="FILLED3">
+<LabelBlock>
+<IndexedIdentifier Name="machine_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="7"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="264" X="225"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED2" Source="FILLED1">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<IndexedIdentifier Name="tu_reject">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-14" X="-100"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="183" X="158"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="EMPTY" Source="FILLED1">
+<LabelBlock>
+<IndexedIdentifier Name="machine_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="103" X="225"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FILLED1" Source="EMPTY">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="PREV"/>
+</IndexedIdentifier>
+<IndexedIdentifier Name="tu_reject">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-17" X="-100"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="103" X="159"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+</ComponentList>
+</ForeachComponent>
+</ComponentList>
+</ForeachComponent>
+<ForeachComponent Name="GROUP">
+<SimpleIdentifier Name="GROUPS"/>
+<ComponentList>
+<SimpleComponent Kind="SPEC">
+<IndexedIdentifier Name="b2sup">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<Graph>
+<NodeList>
+<SimpleNode Initial="true" Name="EMPTY">
+<EventList>
+<SimpleIdentifier Name=":accepting"/>
+</EventList>
+<PointGeometry>
+<Point Y="176" X="224"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="FULL">
+<PointGeometry>
+<Point Y="256" X="224"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Target="EMPTY" Source="FULL">
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-7" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="216" X="257"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="FULL" Source="EMPTY">
+<LabelBlock>
+<IndexedIdentifier Name="machine_unload">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-7" X="-146"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="215" X="190"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="EMPTY" Source="EMPTY">
+<LabelBlock>
+<IndexedIdentifier Name="machine_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-13" X="-53"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="138" X="225"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+</ComponentList>
+</ForeachComponent>
+<SimpleComponent Kind="PLANT" Name="init">
+<Graph>
+<NodeList>
+<SimpleNode Name="WORKING">
+<PointGeometry>
+<Point Y="249" X="214"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Initial="true" Name="IDLE">
+<EventList>
+<SimpleIdentifier Name=":accepting"/>
+</EventList>
+<PointGeometry>
+<Point Y="162" X="214"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Target="WORKING" Source="IDLE">
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<IntConstant Value="0"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-5" X="-57"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="201" X="176"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="IDLE" Source="WORKING">
+<LabelBlock>
+<IndexedIdentifier Name="tu_accept">
+<IntConstant Value="0"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-7" X="5"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="203" X="256"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+<ForeachComponent Name="GROUP">
+<SimpleIdentifier Name="GROUPS"/>
+<ComponentList>
+<SimpleComponent Kind="PLANT">
+<IndexedIdentifier Name="machine">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<Graph>
+<NodeList>
+<SimpleNode Name="WORKING">
+<PointGeometry>
+<Point Y="249" X="234"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Initial="true" Name="IDLE">
+<EventList>
+<SimpleIdentifier Name=":accepting"/>
+</EventList>
+<PointGeometry>
+<Point Y="162" X="234"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Target="WORKING" Source="IDLE">
+<LabelBlock>
+<IndexedIdentifier Name="machine_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-6" X="-132"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="201" X="192"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="IDLE" Source="WORKING">
+<LabelBlock>
+<IndexedIdentifier Name="machine_unload">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-7" X="6"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="201" X="274"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+</ComponentList>
+</ForeachComponent>
+<ForeachComponent Name="GROUP">
+<SimpleIdentifier Name="GROUPS"/>
+<ComponentList>
+<SimpleComponent Kind="PLANT">
+<IndexedIdentifier Name="testunit">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<Graph>
+<NodeList>
+<SimpleNode Name="WORKING">
+<PointGeometry>
+<Point Y="249" X="198"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Initial="true" Name="IDLE">
+<EventList>
+<SimpleIdentifier Name=":accepting"/>
+</EventList>
+<PointGeometry>
+<Point Y="162" X="198"/>
+</PointGeometry>
+<LabelGeometry>
+<Point Y="5" X="11"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Target="IDLE" Source="WORKING">
+<LabelBlock>
+<IndexedIdentifier Name="tu_reject">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<IndexedIdentifier Name="tu_accept">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-13" X="5"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="201" X="241"/>
+</SplineGeometry>
+</Edge>
+<Edge Target="WORKING" Source="IDLE">
+<LabelBlock>
+<IndexedIdentifier Name="tu_load">
+<SimpleIdentifier Name="GROUP"/>
+</IndexedIdentifier>
+<LabelGeometry Anchor="NW">
+<Point Y="-6" X="-90"/>
+</LabelGeometry>
+</LabelBlock>
+<SplineGeometry>
+<Point Y="201" X="159"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+</ComponentList>
+</ForeachComponent>
+</ComponentList>
+</Module>

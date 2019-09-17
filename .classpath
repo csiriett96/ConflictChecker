@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="jar/waters552.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://www.cs.waikato.ac.nz/~robi/compx552-19a/waters-docs/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="waters552/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="jar/log4j-api-2.9.0.jar"/>
+	<classpathentry kind="lib" path="jar/log4j-core-2.9.0.jar"/>
+	<classpathentry kind="lib" path="jar/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="jar/jaxb-core.jar"/>
+	<classpathentry kind="lib" path="jar/jaxb-impl.jar"/>
+	<classpathentry kind="lib" path="jar/trove-3.0.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
